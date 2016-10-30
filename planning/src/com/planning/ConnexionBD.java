@@ -11,4 +11,6 @@ package com.planning;
  */
 public class ConnexionBD {
     
+    private int x = 0;
+    
 }
