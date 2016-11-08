@@ -5,6 +5,7 @@
  */
 package com.planning;
 
+import java.awt.Color;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -32,7 +33,28 @@ public class ConnexionBD {
         
     }
      public static void main(String args[]){
+         Connection conn = null;
+         ResultSet rs = null;
+         PreparedStatement ps = null;
          ConnexionBD.open();
+         try{
+            String requete = "select * from Enseignant ";
+            ps = conn.prepareStatement(requete);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                  System.out.println("DONE !");
+                  
+                  
+                  
+                  
+            }
+            
+            
+        }catch(Exception e){
+            System.out.println("--> Exception : "+ e);
+          
+    }                   
+         
      }
     
 }
