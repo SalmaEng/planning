@@ -13,6 +13,8 @@
     <class>com.planning.model.Genie</class>
     <class>com.planning.model.EnsCours</class>
     <class>com.planning.model.Seancerattp</class>
+    <class>com.planning.model.Filiere</class>
+    <class>com.planning.model.Matiere</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/planning_bd"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

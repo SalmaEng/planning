@@ -8,7 +8,6 @@ package com.planning.model;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,62 +17,60 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Pro
+ * @author genereux
  */
-@Entity
-@Table(name = "seance")
-@XmlRootElement
+/*@Entity
+@Table(name = "Seance")
 @NamedQueries({
-    @NamedQuery(name = "Seance.findAll", query = "SELECT s FROM Seance s")
-    , @NamedQuery(name = "Seance.findByNumSeance", query = "SELECT s FROM Seance s WHERE s.numSeance = :numSeance")
-    , @NamedQuery(name = "Seance.findByDateSeance", query = "SELECT s FROM Seance s WHERE s.dateSeance = :dateSeance")
-    , @NamedQuery(name = "Seance.findByHeureSeance", query = "SELECT s FROM Seance s WHERE s.heureSeance = :heureSeance")})
+    @NamedQuery(name = "Seance.findAll", query = "SELECT s FROM Seance s")})*/
+
 public class Seance implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
+    /*@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "NumSeance")
-    private Integer numSeance;
-    @Column(name = "DateSeance")
-    @Temporal(TemporalType.DATE)
+    @Column(name = "NumSeance")*/
+    private int numSeance;
+    /*@Column(name = "DateSeance")
+    @Temporal(TemporalType.DATE)*/
     private Date dateSeance;
-    @Column(name = "HeureSeance")
-    @Temporal(TemporalType.DATE)
+    /*@Column(name = "HeureSeance")
+    @Temporal(TemporalType.DATE)*/
     private Date heureSeance;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "seance")
-    private Seancearattp seancearattp;
-    @JoinColumn(name = "NumCours", referencedColumnName = "NumCours")
-    @ManyToOne
-    private Cours numCours;
-    @JoinColumn(name = "NumEns", referencedColumnName = "NumEns")
-    @ManyToOne(optional = false)
-    private Enseignant numEns;
-    @JoinColumn(name = "NumGroupe", referencedColumnName = "NumGroupe")
-    @ManyToOne
-    private Groupe numGroupe;
+    /*@Column(name = "EtatSeance")*/
+    private int etatSeance;
+    /*@JoinColumn(name = "NumEns", referencedColumnName = "NumEns")
+    @ManyToOne(optional = false)*/
+    private int numEns;
+    /*@JoinColumn(name = "NumFiliere", referencedColumnName = "NumFiliere")
+    @ManyToOne(optional = false)*/
+    private int numFiliere;
+    /*@JoinColumn(name = "NumGroupe", referencedColumnName = "NumGroupe")
+    @ManyToOne*/
+    private int numGroupe;
+    /*@JoinColumn(name = "NumMatiere", referencedColumnName = "NumMatiere")
+    @ManyToOne*/
+    private int numMatiere;
 
     public Seance() {
     }
 
-    public Seance(Integer numSeance) {
+    public Seance(int numSeance) {
         this.numSeance = numSeance;
     }
 
-    public Integer getNumSeance() {
+    public int getNumSeance() {
         return numSeance;
     }
 
-    public void setNumSeance(Integer numSeance) {
+    public void setNumSeance(int numSeance) {
         this.numSeance = numSeance;
     }
 
@@ -93,39 +90,47 @@ public class Seance implements Serializable {
         this.heureSeance = heureSeance;
     }
 
-    public Seancearattp getSeancearattp() {
-        return seancearattp;
+    public int getEtatSeance() {
+        return etatSeance;
     }
 
-    public void setSeancearattp(Seancearattp seancearattp) {
-        this.seancearattp = seancearattp;
+    public void setEtatSeance(int etatSeance) {
+        this.etatSeance = etatSeance;
     }
 
-    public Cours getNumCours() {
-        return numCours;
-    }
-
-    public void setNumCours(Cours numCours) {
-        this.numCours = numCours;
-    }
-
-    public Enseignant getNumEns() {
+    public int getNumEns() {
         return numEns;
     }
 
-    public void setNumEns(Enseignant numEns) {
+    public void setNumEns(int numEns) {
         this.numEns = numEns;
     }
 
-    public Groupe getNumGroupe() {
+    public int getNumFiliere() {
+        return numFiliere;
+    }
+
+    public void setNumFiliere(int numFiliere) {
+        this.numFiliere = numFiliere;
+    }
+
+    public int getNumGroupe() {
         return numGroupe;
     }
 
-    public void setNumGroupe(Groupe numGroupe) {
+    public void setNumGroupe(int numGroupe) {
         this.numGroupe = numGroupe;
     }
 
-    @Override
+    public int getNumMatiere() {
+        return numMatiere;
+    }
+
+    public void setNumMatiere(int numMatiere) {
+        this.numMatiere = numMatiere;
+    }
+
+    /*@Override
     public int hashCode() {
         int hash = 0;
         hash += (numSeance != null ? numSeance.hashCode() : 0);
@@ -143,7 +148,7 @@ public class Seance implements Serializable {
             return false;
         }
         return true;
-    }
+    }*/
 
     @Override
     public String toString() {

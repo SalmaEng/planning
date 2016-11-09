@@ -6,64 +6,45 @@
 package com.planning.model;
 
 import java.io.Serializable;
-import java.util.Collection;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
- * @author Pro
+ * @author genereux
  */
-@Entity
-@Table(name = "groupe")
-@XmlRootElement
+/*@Entity
+@Table(name = "Groupe")
 @NamedQueries({
-    @NamedQuery(name = "Groupe.findAll", query = "SELECT g FROM Groupe g")
-    , @NamedQuery(name = "Groupe.findByNumGroupe", query = "SELECT g FROM Groupe g WHERE g.numGroupe = :numGroupe")
-    , @NamedQuery(name = "Groupe.findByNomGroupe", query = "SELECT g FROM Groupe g WHERE g.nomGroupe = :nomGroupe")
-    , @NamedQuery(name = "Groupe.findByPromotion", query = "SELECT g FROM Groupe g WHERE g.promotion = :promotion")})
+    @NamedQuery(name = "Groupe.findAll", query = "SELECT g FROM Groupe g")})*/
+
 public class Groupe implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
+    /*@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "NumGroupe")
-    private Integer numGroupe;
-    @Column(name = "NomGroupe")
+    @Column(name = "NumGroupe")*/
+    private int numGroupe;
+    /*@Column(name = "NomGroupe")*/
     private String nomGroupe;
-    @Column(name = "Promotion")
-    private Integer promotion;
-    @JoinColumn(name = "NumGenie", referencedColumnName = "NumGenie")
-    @ManyToOne(optional = false)
-    private Genie numGenie;
-    @OneToMany(mappedBy = "numGroupe")
-    private Collection<Seance> seanceCollection;
+    /*@Column(name = "Niveau")*/
+    private int niveau;
+    /*@OneToMany(mappedBy = "numGroupe")*/
+     private Set<Seance> seanceList = new HashSet<Seance> ();
 
     public Groupe() {
     }
 
-    public Groupe(Integer numGroupe) {
+    public Groupe(int numGroupe) {
         this.numGroupe = numGroupe;
     }
 
-    public Integer getNumGroupe() {
+    public int getNumGroupe() {
         return numGroupe;
     }
 
-    public void setNumGroupe(Integer numGroupe) {
+    public void setNumGroupe(int numGroupe) {
         this.numGroupe = numGroupe;
     }
 
@@ -75,32 +56,38 @@ public class Groupe implements Serializable {
         this.nomGroupe = nomGroupe;
     }
 
-    public Integer getPromotion() {
-        return promotion;
+    public int getNiveau() {
+        return niveau;
     }
 
-    public void setPromotion(Integer promotion) {
-        this.promotion = promotion;
+    public void setNiveau(int niveau) {
+        this.niveau = niveau;
     }
 
-    public Genie getNumGenie() {
-        return numGenie;
+    public Set<Seance> getSeanceList() {
+        return seanceList;
     }
 
-    public void setNumGenie(Genie numGenie) {
-        this.numGenie = numGenie;
+    public void setSeanceList(Set<Seance> seanceList) {
+        this.seanceList = seanceList;
+    }
+    
+    public void addSeance(Seance seance){
+        if(!this.seanceList.contains(seance)) this.seanceList.add(seance);
+    }
+    
+    public void removeSeance(Seance seance){
+        this.seanceList.remove(seance);
+        
+    }
+    
+    public boolean equals(Groupe groupe){
+        return this.getNumGroupe() == groupe.getNumGroupe();
     }
 
-    @XmlTransient
-    public Collection<Seance> getSeanceCollection() {
-        return seanceCollection;
-    }
 
-    public void setSeanceCollection(Collection<Seance> seanceCollection) {
-        this.seanceCollection = seanceCollection;
-    }
 
-    @Override
+    /*@Override
     public int hashCode() {
         int hash = 0;
         hash += (numGroupe != null ? numGroupe.hashCode() : 0);
@@ -118,7 +105,7 @@ public class Groupe implements Serializable {
             return false;
         }
         return true;
-    }
+    }*/
 
     @Override
     public String toString() {
