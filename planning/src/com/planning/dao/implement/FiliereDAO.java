@@ -7,10 +7,13 @@ package com.planning.dao.implement;
 
 import com.planning.dao.DAO;
 import com.planning.model.Filiere;
+import com.planning.model.Seance;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Iterator;
+import java.util.Set;
 
 /**
  *
@@ -49,8 +52,22 @@ public class FiliereDAO extends DAO<Filiere> {
             
             if(res.first()) {
             
-                    filiere = new Filiere(res.getInt(0), res.getString(1));
-             } 
+                filiere = new Filiere(res.getInt(0), res.getString(1));
+                    
+                    
+                SeanceDAO seanceDAO = new SeanceDAO(this.conn);
+                
+                
+                Set<Seance> seanceList = seanceDAO.findByNumFiliere(res.getInt(0));
+                
+                Iterator iterator = seanceList.iterator();
+                
+                while(iterator.hasNext()){
+                
+                    filiere.addSeance((Seance)iterator.next());
+                }
+             }
+            
         }catch (SQLException e) {
             
         e.printStackTrace();

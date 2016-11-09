@@ -6,12 +6,14 @@
 package com.planning.dao.implement;
 
 import com.planning.dao.DAO;
-import com.planning.model.ConnexionBD;
 import com.planning.model.Enseignant;
+import com.planning.model.Seance;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Iterator;
+import java.util.Set;
 
 /**
  *
@@ -55,16 +57,15 @@ public class EnseignantDAO extends DAO<Enseignant> {
                 
                 SeanceDAO seanceDAO = new SeanceDAO(this.conn);
                 
-                String query2 = new String("SELECT * FROM Seance WHERE Seance.NumEns = Enseignant.NumEns and Enseignant.NumEns = " + res.getInt(0));
                 
-                ResultSet res2 = state.executeQuery(query2);
+                Set<Seance> seanceList = seanceDAO.findByNumEns(res.getInt(0));
                 
+                Iterator iterator = seanceList.iterator();
                 
-                while(res2.next()) {
+                while(iterator.hasNext()){
                 
-                    enseignant.addSeance(seance);
+                    enseignant.addSeance((Seance)iterator.next());
                 }
-                
             }
         
         } catch (SQLException e) {
