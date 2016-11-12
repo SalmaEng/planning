@@ -5,6 +5,8 @@
  */
 package com.planning.view;
 
+import com.planning.model.ConnexionBD;
+
 /**
  *
  * @author Azough Mehdi
@@ -34,9 +36,7 @@ public class LoginGUI extends javax.swing.JFrame {
         loginbackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(900, 600));
         setMinimumSize(new java.awt.Dimension(900, 600));
-        setPreferredSize(new java.awt.Dimension(900, 600));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -44,6 +44,11 @@ public class LoginGUI extends javax.swing.JFrame {
         Connexion.setText("Connexion");
         Connexion.setToolTipText("");
         Connexion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Connexion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ConnexionMouseClicked(evt);
+            }
+        });
         getContentPane().add(Connexion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 510, 150, -1));
 
         identifiant.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -70,6 +75,10 @@ public class LoginGUI extends javax.swing.JFrame {
     private void identifiantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_identifiantActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_identifiantActionPerformed
+
+    private void ConnexionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConnexionMouseClicked
+       
+    }//GEN-LAST:event_ConnexionMouseClicked
 
     /**
      * @param args the command line arguments
