@@ -16,6 +16,7 @@ public class LoginGUI extends javax.swing.JFrame {
      */
     public LoginGUI() {
         initComponents();
+        
     }
 
     /**
@@ -30,17 +31,20 @@ public class LoginGUI extends javax.swing.JFrame {
         Connexion = new javax.swing.JButton();
         identifiant = new javax.swing.JTextField();
         motdepasse = new javax.swing.JPasswordField();
-        LoginBackground = new javax.swing.JLabel();
+        loginbackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(900, 600));
+        setMinimumSize(new java.awt.Dimension(900, 600));
         setPreferredSize(new java.awt.Dimension(900, 600));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Connexion.setFont(new java.awt.Font("Champagne & Limousines", 1, 24)); // NOI18N
         Connexion.setText("Connexion");
         Connexion.setToolTipText("");
         Connexion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(Connexion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 500, 160, 40));
+        getContentPane().add(Connexion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 510, 150, -1));
 
         identifiant.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         identifiant.addActionListener(new java.awt.event.ActionListener() {
@@ -53,9 +57,11 @@ public class LoginGUI extends javax.swing.JFrame {
         motdepasse.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(motdepasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 400, 230, 30));
 
-        LoginBackground.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LoginBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/planning/view/LoginBG.png"))); // NOI18N
-        getContentPane().add(LoginBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -30, -1, -1));
+        loginbackground.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        loginbackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("../images/LoginBG.png")));
+        loginbackground.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        loginbackground.setPreferredSize(new java.awt.Dimension(900, 600));
+        getContentPane().add(loginbackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 580));
 
         pack();
         setLocationRelativeTo(null);
@@ -102,8 +108,8 @@ public class LoginGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Connexion;
-    private javax.swing.JLabel LoginBackground;
     private javax.swing.JTextField identifiant;
+    private javax.swing.JLabel loginbackground;
     private javax.swing.JPasswordField motdepasse;
     // End of variables declaration//GEN-END:variables
 }
